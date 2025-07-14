@@ -1,0 +1,11 @@
+[package]
+name = "cat_volleyball"
+version = "0.1.0"
+edition = "2024"
+
+[target.x86_64-unknown-linux-gnu]
+linker = "mold"
+
+
+[dependencies]
+bevy = "0.16.1"
