@@ -8,4 +8,4 @@ linker = "mold"
 
 
 [dependencies]
-bevy = "0.16.1"
+bevy = "0.10.1"
