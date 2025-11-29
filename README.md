@@ -112,18 +112,6 @@ To run the game, ensure you have the following assets in the `assets/` directory
 ### Fonts (`assets/fonts/`)
 - `square.ttf` - Font for score display
 
-## 🐛 Known Issues
-
-- Audio files need to be added to the `assets/audio/` directory
-- Current cat sprites are basic - see `CAT_SPRITE_GUIDE.md` for instructions on using realistic cat images
-
-## 🎨 Customizing Cat Sprites
-
-Want to use realistic cat images? Check out [`CAT_SPRITE_GUIDE.md`](CAT_SPRITE_GUIDE.md) for detailed instructions on:
-- Sprite sheet requirements and specifications
-- Where to find free cat pixel art
-- How to create your own custom sprites
-
 ## 📝 Future Enhancements
 
 - [ ] AI opponent for single-player mode
@@ -141,12 +129,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 - Built with [Bevy Engine](https://bevyengine.org/)
 - Inspired by classic volleyball games
-- Cat sprites and game assets created for this project
-
-## 📧 Contact
-
-For questions, suggestions, or bug reports, please open an issue on GitHub.
-
----
-
-**Enjoy playing Cat Volleyball! 🐱🏐**
