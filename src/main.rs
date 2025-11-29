@@ -65,7 +65,7 @@ fn initialize_scoreboard(
 }
 
 /// Initializes one ball in the middle-ish of the arena.
-fn initialize_ball(commands: &mut Commands, atlas: Handle<TextureAtlas>, ball_sprite: usize) {
+fn initialize_ball(commands: &mut Commands, asset_server: &Res<AssetServer>, atlas: Handle<TextureAtlas>, ball_sprite: usize) {
     let bounce_audio = asset_server.load("audio/bounce.ogg");
     let score_audio = asset_server.load("audio/score.ogg");
     commands.spawn((
@@ -187,13 +187,13 @@ fn bounce(
                 if ball.velocity.y < 0.0 {
                     audio.play(ball.bounce.clone());
                     ball.velocity.y = -ball.velocity.y;
-                    let mut rng = rand::thread_rng(); // Reverted to thread_rng
+                    let mut rng = rand::rng();
                     match player.side {
                         Side::Left => {
-                            ball.velocity.x = ball.velocity.x.abs() * rng.gen_range(0.6..1.4); // Reverted to gen_range
+                            ball.velocity.x = ball.velocity.x.abs() * rng.random_range(0.6..1.4);
                         }
                         Side::Right => {
-                            ball.velocity.x = -ball.velocity.x.abs() * rng.gen_range(0.6..1.4); // Reverted to gen_range
+                            ball.velocity.x = -ball.velocity.x.abs() * rng.random_range(0.6..1.4);
                         }
                     }
                 }
@@ -225,7 +225,7 @@ _Albatross_v2.ogg",
         ..default()
     });
 
-    initialize_ball(&mut commands, texture_atlas_handle.clone(), 2);
+    initialize_ball(&mut commands, &asset_server, texture_atlas_handle.clone(), 2);
 
     initialize_player(
         &mut commands,
