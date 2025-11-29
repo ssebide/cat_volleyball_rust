@@ -29,7 +29,7 @@ pub struct Ball {
     pub score: Handle<AudioSource>,  // Audio source for scoring
 }
 
-pub const SCORE_FONT_SIZE: f32 = 20.0;
+pub const SCORE_FONT_SIZE: f32 = 48.0;
 #[derive(Component)]
 struct ScoreBoard {
     side: Side,
@@ -37,7 +37,6 @@ struct ScoreBoard {
 
 fn initialize_scoreboard(
     commands: &mut Commands,
-    asset_server: &Res<AssetServer>,
     side: Side,
     x: f32,
 ) {
@@ -46,7 +45,7 @@ fn initialize_scoreboard(
         TextBundle::from_sections([TextSection::from_style(TextStyle {
             font_size: SCORE_FONT_SIZE,
             color: Color::WHITE,
-            font: asset_server.load("fonts/square.ttf"),
+            ..default()
         })])
         .with_style(Style {
             position_type: PositionType::Absolute,
@@ -55,12 +54,14 @@ fn initialize_scoreboard(
                 left: Val::Px(x),
                 ..default()
             },
+            padding: UiRect::all(Val::Px(10.0)),
             ..default()
         })
         .with_text_alignment(match side {
             Side::Left => TextAlignment::Left,
             Side::Right => TextAlignment::Right,
-        }),
+        })
+        .with_background_color(Color::rgba(0.0, 0.0, 0.0, 0.7)),
     ));
 }
 
@@ -246,13 +247,11 @@ _Albatross_v2.ogg",
 
     initialize_scoreboard(
         &mut commands,
-        &asset_server,
         Side::Left,
         ARENA_WIDTH / 2.0 - 25.0,
     );
     initialize_scoreboard(
         &mut commands,
-        &asset_server,
         Side::Right,
         ARENA_WIDTH / 2.0 + 25.0,
     );
